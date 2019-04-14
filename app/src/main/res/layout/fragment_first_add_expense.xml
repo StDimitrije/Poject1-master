@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <!--android:gravity="1"-->
+
+    <TextView
+        android:id="@+id/first_tv_title"
+        android:layout_marginTop="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Expense:"
+        android:textSize="30sp"/>
+
+    <EditText
+        android:id="@+id/first_et_title"
+        android:layout_marginTop="50dp"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/first_et_cost"
+        android:layout_marginTop="25dp"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content" />
+    <Spinner
+        android:id="@+id/first_spinner"
+        android:layout_marginTop="25dp"
+        android:layout_width="250dp"
+        android:layout_height="45dp ">
+
+    </Spinner>
+
+    <Button
+        android:id="@+id/first_btn_add"
+        android:layout_marginTop="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"/>
+
+</LinearLayout>
