@@ -5,39 +5,44 @@
     android:layout_height="match_parent"
     >
 
-    <!--android:gravity="1"-->
+
 
     <TextView
         android:id="@+id/first_tv_title"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add Expense:"
-        android:textSize="30sp"/>
+        android:textSize="20sp"
+        android:layout_gravity="center"/>
 
     <EditText
         android:id="@+id/first_et_title"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:layout_width="250dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
     <EditText
         android:id="@+id/first_et_cost"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         android:layout_width="250dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
     <Spinner
         android:id="@+id/first_spinner"
         android:layout_marginTop="25dp"
         android:layout_width="250dp"
-        android:layout_height="45dp ">
+        android:layout_height="35dp"
+        android:layout_gravity="center">
 
     </Spinner>
 
     <Button
         android:id="@+id/first_btn_add"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add"/>
+        android:text="Add"
+        android:layout_gravity="center"/>
 
 </LinearLayout>

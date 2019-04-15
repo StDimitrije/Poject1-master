@@ -93,7 +93,7 @@ public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.Expens
 
                         if(mOnRemoveItemCallback != null){
 
-                            mOnRemoveItemCallback.onItemRemove(getAdapterPosition());
+                            mOnRemoveItemCallback.onItemRemove(position);
                         }
                     }
 
