@@ -12,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.poject1.R;
-import com.example.poject1.adapter.ExpensesAdapter;
 import com.example.poject1.model.Category;
 import com.example.poject1.model.Expense;
 import com.example.poject1.util.Util;
@@ -30,7 +29,6 @@ import androidx.lifecycle.ViewModelProviders;
 public class FirstFragment extends Fragment {
 
     private MainViewModel mainViewModel;
-    private ExpensesAdapter expensesAdapter;
     private Spinner spinner;
     private Button mAddBtn;
     private TextView mTitle;
@@ -48,7 +46,7 @@ public class FirstFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_first_add_expense, container, false);
         spinner =view.findViewById(R.id.first_spinner);
-        adapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_list_item_1, new ArrayList<>());
+        adapter = new ArrayAdapter<>(view.getContext(), R.layout.spinner_custom, new ArrayList<>());
         spinner.setAdapter(adapter);
 
         mTitle=view.findViewById(R.id.first_tv_title);
@@ -61,15 +59,17 @@ public class FirstFragment extends Fragment {
 
 
                 // safe checks here
-                String title = mEtTitle.getText().toString();
+                String title = mEtTitle.getText().toString().toUpperCase();
 
                 String cost = mEtCost.getText().toString();
                 String date = Util.generateDate().toString();
                 String category = spinner.getSelectedItem().toString();
-                Expense expense = new Expense(Util.generateId(),title,category, cost ,date);
+                Expense expense = new Expense(Util.generateId(),title,category, cost+" din." ,date);
 
 
                 mainViewModel.addExpense(expense);
+
+
                 Toast.makeText(FirstFragment.this.getContext(), "Expense added: " + cost + " for: " + title, Toast.LENGTH_SHORT).show();
             }
         });

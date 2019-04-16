@@ -2,14 +2,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp">
 
     <EditText
         android:id="@+id/second_et_filter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:hint="Filter expenses by name"/>
+        android:hint="Filter expenses by name"
+        android:textColor="@color/darkGrey"
+        android:textColorHint="@color/darkGrey"/>
     <Spinner
         android:id="@+id/second_spinner"
         android:layout_width="250dp"
@@ -25,7 +29,8 @@
         android:layout_below="@id/second_et_filter"
         android:text="Apply"
         android:layout_marginTop="20dp"
-        android:layout_toRightOf="@+id/second_spinner" />
+        android:layout_toRightOf="@+id/second_spinner"
+        android:background="@drawable/roundbutton"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/second_recycler_view"

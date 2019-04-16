@@ -20,38 +20,19 @@ public class MainViewModel extends ViewModel {
     private List<Category> mCategoryList;
     private List<Expense> mExpensesList;
 
-    private MutableLiveData<String> mSpinnerChoiceLiveData;
-
-    private MutableLiveData<String> mPercantageLiveData;
-
-
-
 
     public MainViewModel(){
-        mSpinnerChoiceLiveData = new MutableLiveData<>();
         mExpensesLiveData = new MutableLiveData<>();
-        mPercantageLiveData = new MutableLiveData<>();
         mCategoryLiveData = new MutableLiveData<>();
         mCategoryList = new ArrayList<>();
         mExpensesList = new ArrayList<>();
 
-        for(int i=0; i<5; i++){
-            mCategoryList.add(new Category(Util.generateId(), "Category" + i));
+        for(int i=1; i<4; i++){
+            mCategoryList.add(new Category(Util.generateId(), "CATEGORY" + i));
         }
         mCategoryLiveData.setValue(mCategoryList);
 
     }
-
-
-
-    public MutableLiveData<String> getmSpinnerChoiceLiveData(){
-        return mSpinnerChoiceLiveData;
-    }
-
-    public void setSpinnerCoice(String choice){
-        mSpinnerChoiceLiveData.setValue(choice);
-    }
-
 
     public MutableLiveData<List<Category>> getCategoryLiveData() {
         return mCategoryLiveData;
@@ -65,6 +46,11 @@ public class MainViewModel extends ViewModel {
         mCategoryLiveData.setValue(mCategoryList);
     }
 
+    public Expense getExpense(int index){
+        return mExpensesList.get(index);
+
+    }
+
     public void addExpense(Expense expense){
         mExpensesList.add(expense);
         mExpensesLiveData.setValue(mExpensesList);
@@ -74,18 +60,31 @@ public class MainViewModel extends ViewModel {
         mExpensesList.remove(position);
         mExpensesLiveData.setValue(mExpensesList);
     }
+//    public void addToCategorySum(Category category1,int sum){
+//    }
 
-    public void setPercentage(String percentage){
+    public void setTitleFilter(String filter) {
 
-        mPercantageLiveData.setValue(percentage);
+        filter = filter.toLowerCase();
+        List<Expense> filteredExpenseList = new ArrayList<>();
+        for(Expense expense: mExpensesList){
+            if(expense.getmTitle().toLowerCase().startsWith(filter)){
+
+                filteredExpenseList.add(expense);
+            }
+        }
+        mExpensesLiveData.setValue(filteredExpenseList);
     }
 
-    public MutableLiveData<String> getPercentage(){
+    public void setCategoryFilter(String filter){
+        filter = filter.toLowerCase();
+        List<Expense> filteredCategoryList = new ArrayList<>();
+        for(Expense expense: mExpensesList){
+            if (expense.getmCategory().toLowerCase().startsWith(filter)){
 
-        return mPercantageLiveData;
-    }
-
-
-    public void setFilter(String filter) {
+                filteredCategoryList.add(expense);
+            }
+        }
+        mExpensesLiveData.setValue(filteredCategoryList);
     }
 }

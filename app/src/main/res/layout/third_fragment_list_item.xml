@@ -4,7 +4,7 @@
     android:layout_height="55dp">
 
     <TextView
-        android:id="@+id/fourth_li_tv_title"
+        android:id="@+id/third_li_tv_title"
         android:layout_width="280dp"
         android:layout_height="match_parent"
         android:layout_gravity="center"

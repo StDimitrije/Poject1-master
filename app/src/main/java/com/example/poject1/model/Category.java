@@ -4,10 +4,12 @@ public class Category {
 
     private int mId;
     private String mName;
+    private int mSum;
 
     public Category(int id, String name){
         mId = id;
         mName=name;
+        mSum = 0;
     }
 
     public int getmId() {
@@ -29,5 +31,13 @@ public class Category {
     @Override
     public String toString() {
         return mName;
+    }
+
+    public int getmSum() {
+        return mSum;
+    }
+
+    public void setmSum(int mSum) {
+        this.mSum = mSum;
     }
 }

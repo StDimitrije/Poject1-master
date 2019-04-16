@@ -11,10 +11,11 @@ public class ExpensesDiffCallback extends DiffUtil.Callback {
     private List<Expense> mOldList;
     private List<Expense> mNewList;
 
-    public ExpensesDiffCallback(List<Expense> newList, List<Expense> oldList)
+    public ExpensesDiffCallback(List<Expense> oldList, List<Expense> newList)
     {
-        mNewList = newList;
         mOldList = oldList;
+        mNewList = newList;
+
     }
     @Override
     public int getOldListSize() {

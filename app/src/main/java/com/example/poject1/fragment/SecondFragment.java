@@ -1,6 +1,9 @@
 package com.example.poject1.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +14,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.poject1.R;
+import com.example.poject1.activity.DetailsActivity;
 import com.example.poject1.adapter.ExpensesAdapter;
 import com.example.poject1.model.Category;
 import com.example.poject1.model.Expense;
@@ -49,18 +53,38 @@ public class SecondFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_second_show_expense, container,false);
         mSpinner = view.findViewById(R.id.second_spinner);
 
-        categoryArrayAdapter = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_list_item_1, new ArrayList<>());
+        categoryArrayAdapter = new ArrayAdapter<>(view.getContext(), R.layout.spinner_custom, new ArrayList<>());
         mSpinner.setAdapter(categoryArrayAdapter);
 
 
         mFilter = view.findViewById(R.id.second_et_filter);
+        mFilter.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                String tFilter = s.toString();
+
+                mainViewModel.setTitleFilter(tFilter);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         mBtnApplyCat = view.findViewById(R.id.second_btn_apply_category);
         mBtnApplyCat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String filter = mFilter.getText().toString();
-                mainViewModel.setFilter(filter);
+                String cFilter = mSpinner.getSelectedItem().toString();
+                mainViewModel.setCategoryFilter(cFilter);
+
             }
         });
 
@@ -71,6 +95,18 @@ public class SecondFragment extends Fragment {
 
                 mainViewModel.removeExpense(position);
                 Toast.makeText(getContext(), "Remove expense from position: " + position, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        mExpensesAdapter.setDetailsCallback(new ExpensesAdapter.DetailsCallback() {
+            @Override
+            public void showDetails(int position) {
+
+//                Intent intent = new Intent(view.getContext(), DetailsActivity.class);
+//                intent.putExtra("position",position);
+//                startActivity(intent);
+
+
             }
         });
 

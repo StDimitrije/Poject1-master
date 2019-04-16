@@ -52,7 +52,7 @@ public class FourthFragment extends Fragment {
         mAddBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String categoryName = mCategoryEt.getText().toString();
+                String categoryName = mCategoryEt.getText().toString().toUpperCase();
                 Category category = new Category(Util.generateId(), categoryName);
                 mainViewModel.addCategory(category);
                 Toast.makeText(FourthFragment.this.getContext(), "Dodata kategorija: " + categoryName, Toast.LENGTH_SHORT).show();
@@ -78,7 +78,6 @@ public class FourthFragment extends Fragment {
                 new Observer<List<Category>>() {
             @Override
             public void onChanged(List<Category> categories) {
-                Log.e("kategorije",categories.toString());
                 mCategoryAdapter.setData(categories);
             }
         });

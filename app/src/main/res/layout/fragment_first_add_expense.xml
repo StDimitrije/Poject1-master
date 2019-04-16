@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
-
-
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/first_tv_title"
@@ -14,35 +12,64 @@
         android:layout_height="wrap_content"
         android:text="Add Expense:"
         android:textSize="20sp"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:textColor="@color/darkGrey"/>
 
-    <EditText
-        android:id="@+id/first_et_title"
+    <androidx.cardview.widget.CardView
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="30dp"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
-    <EditText
-        android:id="@+id/first_et_cost"
-        android:layout_marginTop="20dp"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
-    <Spinner
-        android:id="@+id/first_spinner"
-        android:layout_marginTop="25dp"
-        android:layout_width="250dp"
-        android:layout_height="35dp"
-        android:layout_gravity="center">
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="10dp"
+        android:elevation="20dp">
 
-    </Spinner>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
+        <EditText
+            android:id="@+id/first_et_title"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Add Title"
+            android:textColorHint="@color/darkGrey"
+            android:textColor="@color/darkGrey"
+            android:backgroundTint="@color/darkVelvet"/>
+        <EditText
+            android:id="@+id/first_et_cost"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Add Cost"
+            android:textColorHint="@color/darkGrey"
+            android:layout_below="@+id/first_et_title"
+            android:textColor="@color/darkGrey"
+            android:backgroundTint="@color/darkVelvet"/>
+        <Spinner
+            android:id="@+id/first_spinner"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_below="@+id/first_et_cost"
+            >
+        </Spinner>
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
     <Button
         android:id="@+id/first_btn_add"
         android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add"
-        android:layout_gravity="center"/>
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:background="@drawable/roundbutton"
+        android:width="200dp"
+        android:elevation="20dp"/>
 
 </LinearLayout>
