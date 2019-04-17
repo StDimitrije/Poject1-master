@@ -46,11 +46,6 @@ public class MainViewModel extends ViewModel {
         mCategoryLiveData.setValue(mCategoryList);
     }
 
-    public Expense getExpense(int index){
-        return mExpensesList.get(index);
-
-    }
-
     public void addExpense(Expense expense){
         mExpensesList.add(expense);
         mExpensesLiveData.setValue(mExpensesList);
@@ -60,8 +55,6 @@ public class MainViewModel extends ViewModel {
         mExpensesList.remove(position);
         mExpensesLiveData.setValue(mExpensesList);
     }
-//    public void addToCategorySum(Category category1,int sum){
-//    }
 
     public void setTitleFilter(String filter) {
 

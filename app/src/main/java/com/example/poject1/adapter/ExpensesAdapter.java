@@ -105,30 +105,19 @@ public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.Expens
             mDetails.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), DetailsActivity.class);
-                Bundle bundle = new Bundle();
+
                 String title = mTitle.getText().toString();
                 String category = mCategory.getText().toString();
                 String cost = mCost.getText().toString();
                 String date = mDate.getText().toString();
                 int position = getAdapterPosition();
-                bundle.putInt("position", position);
-                bundle.putString("title", title);
-                bundle.putString("category",category);
-                bundle.putString("cost", cost);
-                bundle.putString("date", date);
+                    if(position != RecyclerView.NO_POSITION){
 
-                intent.putExtras(bundle);
-                    v.getContext().startActivity(intent);
+                        if(mDetailsCallback != null){
 
-//                    int position = getAdapterPosition();
-//                    if(position != RecyclerView.NO_POSITION){
-//
-//                        if(mDetailsCallback != null){
-//
-//                            mDetailsCallback.showDetails(position);
-//                        }
-//                    }
+                            mDetailsCallback.showDetails(position, title, category, cost, date );
+                        }
+                    }
 
 
                 }
@@ -151,7 +140,7 @@ public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.Expens
     }
 
     public interface DetailsCallback{
-        void showDetails(int position);
+        void showDetails(int position, String title, String category, String cost, String date);
     }
 
     public interface OnRemoveItemCallback{

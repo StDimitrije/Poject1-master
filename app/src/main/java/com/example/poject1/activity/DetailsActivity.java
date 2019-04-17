@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,9 +19,13 @@ import com.example.poject1.viewmodels.MainViewModel;
 import com.squareup.picasso.Picasso;
 
 import java.net.URL;
+import java.util.List;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTabHost;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class DetailsActivity extends AppCompatActivity {
@@ -32,6 +37,7 @@ public class DetailsActivity extends AppCompatActivity {
     private TextView mDateView;
     private ImageView mImageVeiw;
     private Button mRemoveBtn;
+    private List<Expense> mExpenseList;
     private static final String URL = "https://picsum.photos/1080/1920/?random";
 
     @Override
@@ -42,8 +48,8 @@ public class DetailsActivity extends AppCompatActivity {
         init();
     }
 
+
     private void init() {
-        mainViewModel = new MainViewModel();
         Intent intent = getIntent();
         int position =intent.getExtras().getInt("position");
         String title = intent.getExtras().getString("title").toUpperCase();
@@ -69,11 +75,14 @@ public class DetailsActivity extends AppCompatActivity {
         mRemoveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 mainViewModel.removeExpense(position);
                 finish();
+
             }
         });
 
     }
+
+
+
 }

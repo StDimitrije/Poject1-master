@@ -1,5 +1,6 @@
 package com.example.poject1.fragment;
 
+import android.app.RemoteInput;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -99,18 +100,22 @@ public class SecondFragment extends Fragment {
         });
 
         mExpensesAdapter.setDetailsCallback(new ExpensesAdapter.DetailsCallback() {
-            @Override
-            public void showDetails(int position) {
+                                                @Override
+                                                public void showDetails(int position, String title, String category, String cost, String date) {
+                                                    Intent intent = new Intent(view.getContext(), DetailsActivity.class);
+                                                    Bundle bundle = new Bundle();
+                                                    bundle.putInt("position",position);
+                                                    bundle.putString("title", title);
+                                                    bundle.putString("category",category);
+                                                    bundle.putString("cost", cost);
+                                                    bundle.putString("date", date);
+                                                    intent.putExtras(bundle);
+                                                    startActivity(intent);
 
-//                Intent intent = new Intent(view.getContext(), DetailsActivity.class);
-//                intent.putExtra("position",position);
-//                startActivity(intent);
+                                                }
+                                            });
 
-
-            }
-        });
-
-        mRecyclerView = view.findViewById(R.id.second_recycler_view);
+                mRecyclerView = view.findViewById(R.id.second_recycler_view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(view.getContext());
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.setAdapter(mExpensesAdapter);
