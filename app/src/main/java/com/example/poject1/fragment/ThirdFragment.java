@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.example.poject1.R;
 import com.example.poject1.adapter.SumCategoryAdapter;
 import com.example.poject1.model.Category;
+import com.example.poject1.model.Expense;
 import com.example.poject1.viewcustom.PercentageView;
 import com.example.poject1.viewmodels.MainViewModel;
 
@@ -29,7 +30,6 @@ private PercentageView percentageView;
 private TextView totalCostView;
 private MainViewModel mainViewModel;
 private SumCategoryAdapter sumCategoryAdapter;
-private List<Category> mCategoryList;
 
 
 
@@ -65,6 +65,14 @@ private List<Category> mCategoryList;
 
                sumCategoryAdapter.setData(categories);
                percentageView.setCategoryList(categories);
+            }
+        });
+
+        mainViewModel.getExpensesLiveData().observe(getViewLifecycleOwner(), new Observer<List<Expense>>() {
+            @Override
+            public void onChanged(List<Expense> expenses) {
+
+
             }
         });
     }

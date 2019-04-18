@@ -30,14 +30,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class DetailsActivity extends AppCompatActivity {
 
-    private MainViewModel mainViewModel;
     private TextView mTitleView;
     private TextView mCategoryView;
     private TextView mCostView;
     private TextView mDateView;
     private ImageView mImageVeiw;
     private Button mRemoveBtn;
-    private List<Expense> mExpenseList;
     private static final String URL = "https://picsum.photos/1080/1920/?random";
 
     @Override
@@ -51,11 +49,11 @@ public class DetailsActivity extends AppCompatActivity {
 
     private void init() {
         Intent intent = getIntent();
-        int position =intent.getExtras().getInt("position");
-        String title = intent.getExtras().getString("title").toUpperCase();
-        String category = intent.getExtras().getString("category");
-        String cost = intent.getExtras().getString("cost");
-        String date = intent.getExtras().getString("date");
+        int position =intent.getIntExtra("position",0);
+        String title = intent.getStringExtra("title").toUpperCase();
+        String category = intent.getStringExtra("category");
+        String cost = intent.getStringExtra("cost");
+        String date = intent.getStringExtra("date");
 
         mTitleView = findViewById(R.id.details_tv_title);
         mTitleView.setText(title);
@@ -75,12 +73,21 @@ public class DetailsActivity extends AppCompatActivity {
         mRemoveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mainViewModel.removeExpense(position);
-                finish();
-
+                finishActivityWithResult(position);
             }
         });
 
+    }
+
+
+    private void finishActivityWithResult(int position){
+        Intent returnIntent = new Intent();
+        Bundle bundle = new Bundle();
+        bundle.putInt(String.valueOf(SecondFragment.ADAPTER_POSITION), position);
+        returnIntent.putExtras(bundle);
+        setResult(RESULT_OK,returnIntent);
+
+        finish();
     }
 
 

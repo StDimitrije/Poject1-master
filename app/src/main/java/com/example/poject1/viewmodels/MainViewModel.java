@@ -1,6 +1,7 @@
 package com.example.poject1.viewmodels;
 
 import android.icu.util.ULocale;
+import android.util.Log;
 
 import com.example.poject1.model.Category;
 import com.example.poject1.model.Expense;
@@ -11,6 +12,8 @@ import java.util.List;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import static android.content.Context.LOCATION_SERVICE;
 
 public class MainViewModel extends ViewModel {
 
@@ -54,6 +57,19 @@ public class MainViewModel extends ViewModel {
     public void removeExpense(int position){
         mExpensesList.remove(position);
         mExpensesLiveData.setValue(mExpensesList);
+    }
+
+    public void setFilter(String text, String category){
+        text = text.toLowerCase();
+//        category = category.toLowerCase(); NE RADI SA LOWERCASE
+        List<Expense> filteredList = new ArrayList<>();
+        for (Expense expense: mExpensesList){
+            if(expense.getmTitle().toLowerCase().startsWith(text)){
+                if (expense.getmCategory().startsWith(category))
+                    filteredList.add(expense);
+            }
+        }
+        mExpensesLiveData.setValue(filteredList);
     }
 
     public void setTitleFilter(String filter) {
