@@ -2,6 +2,7 @@ package com.example.poject1.util;
 
 import android.content.Context;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 
@@ -9,9 +10,9 @@ public class Util {
 
 
     private static final Random RANDOM = new Random();
-    private static final Date DATE = new Date();
+    private static final String DATE = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
 
-    public static Date generateDate(){
+    public static String generateDate(){
         return DATE;
     }
 

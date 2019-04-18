@@ -44,6 +44,7 @@ public class SecondFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private MainViewModel mainViewModel;
     private ExpensesAdapter mExpensesAdapter;
+    private List<Expense> mExpensesList;
     private ArrayAdapter<Category> categoryArrayAdapter;
     private static final int REQUEST_CODE = 100;
     public static final int ADAPTER_POSITION = 1;
@@ -92,7 +93,6 @@ public class SecondFragment extends Fragment {
 
                 String text = mFilter.getText().toString();
                 String category = mSpinner.getSelectedItem().toString();
-//                mainViewModel.setCategoryFilter(category);
                 mainViewModel.setFilter(text, category);
 
             }
@@ -104,6 +104,7 @@ public class SecondFragment extends Fragment {
             public void onItemRemove(int position) {
 
                 mainViewModel.removeExpense(position);
+
                 Toast.makeText(getContext(), "Remove expense from position: " + position, Toast.LENGTH_SHORT).show();
             }
         });
@@ -141,6 +142,7 @@ public class SecondFragment extends Fragment {
         mainViewModel.getExpensesLiveData().observe(getViewLifecycleOwner(), new Observer<List<Expense>>() {
             @Override
             public void onChanged(List<Expense> expenses) {
+
 
                mExpensesAdapter.setData(expenses);
             }

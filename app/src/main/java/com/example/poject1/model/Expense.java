@@ -9,7 +9,7 @@ public class Expense {
     private String mDate;
 
 
-    public Expense(int id, String title, String category, String cost, String date){
+    public Expense(int id, String title, String category, String cost , String date){
         mId=id;
         mTitle = title;
         mCategory=category;
@@ -56,4 +56,5 @@ public class Expense {
     public void setmDate(String mDate) {
         this.mDate = mDate;
     }
+
 }

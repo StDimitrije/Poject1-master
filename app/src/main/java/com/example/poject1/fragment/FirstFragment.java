@@ -64,11 +64,9 @@ public class FirstFragment extends Fragment {
                 String cost = mEtCost.getText().toString();
                 String date = Util.generateDate().toString();
                 String category = spinner.getSelectedItem().toString();
-                Expense expense = new Expense(Util.generateId(),title,category, cost+" din." ,date);
-
+                Expense expense = new Expense(Util.generateId(),title,category, cost ,date);
 
                 mainViewModel.addExpense(expense);
-
 
                 Toast.makeText(FirstFragment.this.getContext(), "Expense added: " + cost + " for: " + title, Toast.LENGTH_SHORT).show();
             }

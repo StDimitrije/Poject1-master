@@ -57,6 +57,7 @@ public class MainViewModel extends ViewModel {
     public void removeExpense(int position){
         mExpensesList.remove(position);
         mExpensesLiveData.setValue(mExpensesList);
+
     }
 
     public void setFilter(String text, String category){
@@ -72,28 +73,29 @@ public class MainViewModel extends ViewModel {
         mExpensesLiveData.setValue(filteredList);
     }
 
-    public void setTitleFilter(String filter) {
 
-        filter = filter.toLowerCase();
-        List<Expense> filteredExpenseList = new ArrayList<>();
-        for(Expense expense: mExpensesList){
-            if(expense.getmTitle().toLowerCase().startsWith(filter)){
-
-                filteredExpenseList.add(expense);
-            }
-        }
-        mExpensesLiveData.setValue(filteredExpenseList);
-    }
-
-    public void setCategoryFilter(String filter){
-        filter = filter.toLowerCase();
-        List<Expense> filteredCategoryList = new ArrayList<>();
-        for(Expense expense: mExpensesList){
-            if (expense.getmCategory().toLowerCase().startsWith(filter)){
-
-                filteredCategoryList.add(expense);
-            }
-        }
-        mExpensesLiveData.setValue(filteredCategoryList);
-    }
+//    public void setTitleFilter(String filter) {
+//
+//        filter = filter.toLowerCase();
+//        List<Expense> filteredExpenseList = new ArrayList<>();
+//        for(Expense expense: mExpensesList){
+//            if(expense.getmTitle().toLowerCase().startsWith(filter)){
+//
+//                filteredExpenseList.add(expense);
+//            }
+//        }
+//        mExpensesLiveData.setValue(filteredExpenseList);
+//    }
+//
+//    public void setCategoryFilter(String filter){
+//        filter = filter.toLowerCase();
+//        List<Expense> filteredCategoryList = new ArrayList<>();
+//        for(Expense expense: mExpensesList){
+//            if (expense.getmCategory().toLowerCase().startsWith(filter)){
+//
+//                filteredCategoryList.add(expense);
+//            }
+//        }
+//        mExpensesLiveData.setValue(filteredCategoryList);
+//    }
 }
