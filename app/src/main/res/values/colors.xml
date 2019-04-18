@@ -12,6 +12,7 @@
     <color name="pinkish">#F01285</color>
     <color name="darkBlue">#00397A</color>
     <color name="lightBlue">#094585</color>
+    <color name="lightGrey">#DDDDDD</color>
     <color name="pie1">#FF5722</color>
     <color name="pie2">#FFEB3B</color>
     <color name="pie3">#027E23</color>
@@ -19,4 +20,5 @@
     <color name="pie5">#DA1616</color>
     <color name="pie6">#0085E0</color>
     <color name="pie7">#02F38A</color>
+
 </resources>
